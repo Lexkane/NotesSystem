@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign UP</title>
+</head>
+    <body>
+        <h3>Sign UP</h3><BR/>
+
+        <form modelAttribute="userFromSignUp" name='signup_form' method='POST' action='/signup' >
+
+            <div class='col-md-6'>
+                <div class="form-group">
+                    <label>Name</label>
+                    <input class="form-control" type='text' name='username' id='username' placeholder="John" autofocus="" required>
+                </div>
+            </div>
+
+            <div class='col-md-6'>
+                <div class="form-group">
+                    <label>E-mail </label>
+                    <input class="form-control" type='text' name='email' id='email' placeholder="yourname@gmail.com" required>
+                </div>
+            </div>
+
+
+            <div class='col-md-6'>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" name='password' id='password' placeholder='password' required>
+                </div>
+            </div>
+
+            <div class="form-group pull-right">
+                <input type="submit" value='Sign Up' name='signup' id='signup' action='/signup'>
+            </div>
+
+        </form>
+    </body>
+</html>

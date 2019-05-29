@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Notes</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container-fluid" style="margin-top: 20px">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-primary">
+
+                <div class="panel-heading">
+                    <h1 class="panel-title">My Notes</h1>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive" th:if="${not #lists.isEmpty(notes)}">
+                        <table class="table table-hover ">
+                            <thead class="thead-inverse">
+                            <tr>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Note</th>
+                                <th>View</th>
+                                <th>Delete</th>
+                                <th>Edit</th>
+                            </tr>
+                            </thead>
+                            <tr th:remove="all">
+                                <td th:text="${notes.id}">123</td>
+                                <td th:text="${notes.title}">Tasty Goodnees 1</td>
+                                <td th:text="${notes.note}">Tasty Goodnees 2</td>
+                                <td><a href="#">View</a></td>
+                                <td><a href="#">Delete</a></td>
+                                <td><a href="#">Edit</a></td>
+                            </tr>
+                            <tr th:remove="all">
+                                <td th:text="${notes.id}">12333</td>
+                                <td th:text="${notes.title}">Tasty Goodnees 2</td>
+                                <td th:text="${notes.note}">Tasty Goodnees 2</td>
+                                <td><a href="#">View</a></td>
+                                <td><a href="#">Delete</a></td>
+                                <td><a href="#">Edit</a></td>
+                            </tr>
+                            <tr th:each="notes : ${notes}">
+                                <td th:text="${notes.id}">334</td>
+                                <td th:text="${notes.title}">Tasty Goodnees 3</td>
+                                <td th:text="${notes.note}">Tasty Goodnees 2</td>
+                                <td><a href="#", th:href="@{'/notes/show/'+ ${notes.id}}" th:text="VIEW">View</a></td>
+                                <td><a href="#", th:href="@{'/notes/delete/'+ ${notes.id}}" th:text="DELETE">Delete</a></td>
+                                <td><a href="#", th:href="@{'/notes/edit/'+ ${notes.id}}" th:text="EDIT">Edit</a></td>
+                            </tr>
+                            <tr>
+                                <form   name='createNote' method='GET' action='/create_note'>
+                                    <div class="form-group text-right">
+                                        <input type="submit" value='CREATE NEW' name='create_note' >
+                                    </div>
+                                </form>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
